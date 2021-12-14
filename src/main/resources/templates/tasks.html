@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Budget</title>
+
+    <link th:href="@{/styles/tasks.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Tasks</h1>
+        <button class="btn" type="button" th:onclick="|window.location.href='/taskform'|"> Add task</button>
+    </div>
+    <div>
+        <div class="task"  th:each="task : ${tasks}">
+            <div class="title">
+                <h3 th:text="${task.title}"></h3>
+                <a style="color : red" th:href="@{/removeTask(id=${task.id})}">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
+            <p th:text="${task.description}"></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

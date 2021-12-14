@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Budget</title>
+
+    <link th:href="@{/styles/tasks.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Create Task</h1>
+        <button class="btn" type="button" onclick="submitForm();"> Save task</button>
+    </div>
+    <div>
+        <form id="taskForm" th:action="@{/addtask}" th:object="${task}" method="post">
+            <div class="task">
+                <div>
+                    <label>Title :</label>
+                    <input type="text" th:field="*{title}"/>
+                </div>
+                <div>
+                    <label>Description :</label>
+                    <input type="text" th:field="*{description}"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function submitForm() {
+        document.getElementById("taskForm").submit();
+    }
+</script>
+</body>
+</html>
